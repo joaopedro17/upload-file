@@ -66,7 +66,24 @@ class Upload
         return move_uploaded_file($this->tmpName,$path);
     }
 
-    
+    public static function createMultipleUpload(array $files)
+    {
+        $uploads = [];
+
+        foreach ($files['name'] as $key => $value) {
+            $file = [
+                'name' => $files['name'][$key],
+                'type' => $files['type'][$key],
+                'tmp_name' => $files['tmp_name'][$key],
+                'error' => $files['error'][$key],
+                'size' => $files['size'][$key]
+            ];
+        }
+
+        $uploads[] = new Upload($file);
+
+        return $uploads;
+    }
 }
 
 // echo "<pre>";
