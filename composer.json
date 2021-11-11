@@ -1,0 +1,8 @@
+{
+    "name": "upload/file",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app"
+        }
+    }
+}
